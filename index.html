@@ -3,137 +3,1004 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Human Passages</title>
 
+  <meta
+    name="description"
+    content="Human Passages creates thoughtful digital companions for the major passages of life — beginnings, endings, growing, caring, changing and becoming."
+  >
+
   <style>
+    :root {
+      --cream: #f8f4ea;
+      --cream-deep: #eee5d5;
+      --sage: #78816a;
+      --sage-dark: #59634e;
+      --olive: #6c7255;
+      --blue: #819aae;
+      --blue-soft: #dce7ec;
+      --rose: #b98f85;
+      --rose-soft: #eadbd5;
+      --lavender: #9a8ba4;
+      --lavender-soft: #e6dfea;
+      --gold: #b59a63;
+      --ink: #35352f;
+      --muted: #69685f;
+      --white: #fffdf8;
+      --shadow: 0 10px 28px rgba(70, 66, 55, 0.10);
+      --radius: 24px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(220,231,236,.55), transparent 30%),
+        radial-gradient(circle at 90% 15%, rgba(234,219,213,.48), transparent 28%),
+        linear-gradient(180deg, #fbf8f0 0%, var(--cream) 100%);
+      color: var(--ink);
       font-family: Georgia, "Times New Roman", serif;
-      background: #f4f9fc;
-      color: #174f82;
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .wrap {
+      width: min(1120px, calc(100% - 34px));
+      margin: 0 auto;
+    }
+
+    /* HEADER */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(248, 244, 234, 0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(89, 99, 78, 0.12);
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-mark {
+      font-size: 28px;
+    }
+
+    .brand-name {
+      font-size: 27px;
+      letter-spacing: 0.3px;
+    }
+
+    nav {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #4e5148;
+    }
+
+    nav a:hover {
+      color: var(--sage-dark);
+    }
+
+    /* HERO */
+
+    .hero {
+      padding: 95px 0 80px;
       text-align: center;
+      overflow: hidden;
+      position: relative;
     }
 
-    .page {
-      max-width: 760px;
-      margin: auto;
-      padding: 70px 24px;
+    .hero::before,
+    .hero::after {
+      content: "❀";
+      position: absolute;
+      font-size: 170px;
+      color: rgba(129,154,174,.10);
+      z-index: -1;
     }
 
-    .rose {
-      font-size: 52px;
-      margin-bottom: 20px;
+    .hero::before {
+      left: -35px;
+      top: 40px;
+      transform: rotate(-18deg);
+    }
+
+    .hero::after {
+      right: -20px;
+      bottom: 5px;
+      color: rgba(185,143,133,.10);
+      transform: rotate(22deg);
+    }
+
+    .eyebrow {
+      font-family: Arial, Helvetica, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 12px;
+      color: var(--sage-dark);
+      margin-bottom: 18px;
     }
 
     h1 {
-      font-size: 46px;
+      font-size: clamp(54px, 9vw, 94px);
+      line-height: 0.98;
       font-weight: normal;
-      margin: 0 0 10px;
+      margin: 0;
+      color: #353c31;
     }
 
-    .tagline {
-      letter-spacing: 5px;
-      font-family: Arial, sans-serif;
-      font-size: 15px;
-      margin-bottom: 55px;
-    }
-
-    .card {
-      background: #fffdfa;
-      border: 1px solid #c9e2f2;
-      border-radius: 28px;
-      padding: 38px 30px;
-      margin: 25px 0;
-    }
-
-    h2 {
+    .hero h2 {
+      max-width: 790px;
+      margin: 25px auto 0;
+      font-size: clamp(25px, 4vw, 40px);
+      line-height: 1.18;
       font-weight: normal;
-      font-size: 30px;
-      margin-top: 0;
+      font-style: italic;
+      color: #575c4e;
     }
 
-    p {
-      font-family: Arial, sans-serif;
-      color: #607f9d;
+    .hero-copy {
+      max-width: 720px;
+      margin: 30px auto 0;
+      font-family: Arial, Helvetica, sans-serif;
       font-size: 18px;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .hero-actions {
+      margin-top: 34px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-block;
+      text-decoration: none;
+      padding: 14px 25px;
+      border-radius: 999px;
+      background: var(--sage-dark);
+      color: white;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 15px;
+      box-shadow: 0 7px 18px rgba(89,99,78,.18);
+    }
+
+    .button.secondary {
+      background: transparent;
+      color: var(--sage-dark);
+      border: 1px solid rgba(89,99,78,.35);
+      box-shadow: none;
+    }
+
+    .small-divider {
+      width: 150px;
+      height: 1px;
+      background: rgba(108,114,85,.30);
+      margin: 42px auto 0;
+      position: relative;
+    }
+
+    .small-divider::after {
+      content: "♡";
+      position: absolute;
+      background: var(--cream);
+      padding: 0 10px;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--sage);
+      font-size: 21px;
+    }
+
+    /* GENERAL SECTIONS */
+
+    section {
+      padding: 78px 0;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 42px;
+    }
+
+    .section-heading .tiny {
+      text-transform: uppercase;
+      font-family: Arial, Helvetica, sans-serif;
+      letter-spacing: 4px;
+      color: var(--sage);
+      font-size: 11px;
+      margin-bottom: 8px;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-size: clamp(36px, 6vw, 54px);
+      font-weight: normal;
+      line-height: 1.15;
+    }
+
+    .section-heading p {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--muted);
+      font-size: 17px;
+      max-width: 720px;
+      margin: 14px auto 0;
+    }
+
+    /* APPS */
+
+    .apps {
+      background: rgba(255, 253, 248, 0.62);
+      border-top: 1px solid rgba(108,114,85,.10);
+      border-bottom: 1px solid rgba(108,114,85,.10);
+    }
+
+    .app-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .app-card {
+      border-radius: var(--radius);
+      padding: 32px 28px 30px;
+      min-height: 430px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(100,100,90,.10);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .app-card::after {
+      content: "❀";
+      font-size: 120px;
+      position: absolute;
+      right: -28px;
+      bottom: -24px;
+      opacity: .10;
+    }
+
+    .gentle {
+      background:
+        linear-gradient(160deg, #eef5f7 0%, #f9fbfb 100%);
+    }
+
+    .new {
+      background:
+        linear-gradient(160deg, #fbf0e8 0%, #f8f5e9 100%);
+    }
+
+    .becoming {
+      background:
+        linear-gradient(160deg, #f0e9f3 0%, #f7f2f5 100%);
+    }
+
+    .app-icon {
+      font-size: 42px;
+      margin-bottom: 18px;
+    }
+
+    .status {
+      display: inline-block;
+      align-self: flex-start;
+      padding: 7px 13px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.65);
+      font-family: Arial, Helvetica, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1.6px;
+      font-size: 10px;
+      color: #5d6158;
+      margin-bottom: 22px;
+    }
+
+    .app-card h3 {
+      margin: 0;
+      font-size: 34px;
+      font-weight: normal;
+      line-height: 1.05;
+    }
+
+    .app-card p {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #595a54;
+      font-size: 15px;
       line-height: 1.7;
     }
 
-    .footer {
-      margin-top: 50px;
+    .app-card .spacer {
+      flex: 1;
+    }
+
+    .card-link {
+      display: inline-block;
+      align-self: flex-start;
+      margin-top: 20px;
+      font-family: Arial, Helvetica, sans-serif;
+      text-decoration: none;
+      font-size: 14px;
+      padding: 11px 18px;
+      border-radius: 999px;
+      color: white;
+    }
+
+    .gentle .card-link {
+      background: #708da0;
+    }
+
+    .new .card-link {
+      background: #a17d68;
+    }
+
+    .becoming .card-link {
+      background: #897592;
+    }
+
+    /* FUTURE */
+
+    .future-box {
+      border-radius: 30px;
+      padding: 55px 40px;
+      text-align: center;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(185,154,99,.13), transparent 25%),
+        radial-gradient(circle at 90% 75%, rgba(129,154,174,.15), transparent 25%),
+        var(--white);
+      border: 1px solid rgba(108,114,85,.12);
+      box-shadow: var(--shadow);
+    }
+
+    .future-box h2 {
+      font-size: clamp(35px, 5vw, 50px);
+      font-weight: normal;
+      margin: 0;
+    }
+
+    .future-box p {
+      max-width: 760px;
+      margin: 18px auto 0;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 17px;
+      color: var(--muted);
+    }
+
+    .future-names {
+      margin-top: 25px;
+      font-family: Georgia, "Times New Roman", serif;
       font-style: italic;
-      color: #607f9d;
+      color: var(--olive);
+      font-size: 20px;
+    }
+
+    /* ABOUT */
+
+    .about {
+      background:
+        linear-gradient(90deg, rgba(234,219,213,.30), rgba(220,231,236,.25));
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 55px;
+      align-items: center;
+    }
+
+    .about-art {
+      border-radius: 32px;
+      min-height: 430px;
+      background:
+        radial-gradient(circle at 35% 30%, rgba(255,255,255,.9), transparent 25%),
+        linear-gradient(145deg, #e3d8c0 0%, #bdc8ad 48%, #7f8f72 100%);
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px;
+      color: white;
+    }
+
+    .about-art div {
+      font-size: 70px;
+      line-height: 1;
+    }
+
+    .about-copy h2 {
+      font-size: clamp(38px, 5vw, 56px);
+      font-weight: normal;
+      margin: 0 0 7px;
+    }
+
+    .about-copy .creator {
+      color: var(--sage-dark);
+      font-style: italic;
+      font-size: 21px;
+      margin-top: 0;
+    }
+
+    .about-copy p {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 16px;
+      color: #565850;
+      line-height: 1.75;
+    }
+
+    /* PHILOSOPHY */
+
+    .philosophy {
+      text-align: center;
+    }
+
+    .philosophy blockquote {
+      max-width: 850px;
+      margin: 0 auto;
+      font-size: clamp(25px, 4vw, 37px);
+      line-height: 1.45;
+      color: #4c5244;
+      font-weight: normal;
+    }
+
+    .philosophy p {
+      max-width: 780px;
+      margin: 28px auto 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .values {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .value {
+      padding: 8px 15px;
+      border: 1px solid rgba(89,99,78,.22);
+      border-radius: 999px;
+      color: var(--sage-dark);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 13px;
+      background: rgba(255,255,255,.4);
+    }
+
+    /* CONTACT */
+
+    .contact-box {
+      text-align: center;
+      padding: 60px 30px;
+      border-radius: 30px;
+      background: #59634e;
+      color: white;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-box h2 {
+      font-size: clamp(37px, 5vw, 50px);
+      font-weight: normal;
+      margin: 0;
+    }
+
+    .contact-box p {
+      max-width: 650px;
+      margin: 18px auto 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: rgba(255,255,255,.86);
+      font-size: 16px;
+    }
+
+    .contact-box a {
+      display: inline-block;
+      margin-top: 24px;
+      background: white;
+      color: var(--sage-dark);
+      text-decoration: none;
+      padding: 13px 22px;
+      border-radius: 999px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 45px 0 35px;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .footer-brand {
+      font-size: 28px;
+      color: #484d42;
+    }
+
+    .footer-line {
+      font-style: italic;
+      font-size: 20px;
+      margin: 10px 0;
+    }
+
+    .footer-small {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      margin-top: 20px;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 840px) {
+      nav {
+        display: none;
+      }
+
+      .nav {
+        justify-content: center;
+      }
+
+      .hero {
+        padding: 70px 0 65px;
+      }
+
+      .app-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .app-card {
+        min-height: 0;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-art {
+        min-height: 280px;
+      }
+
+      section {
+        padding: 58px 0;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .wrap {
+        width: min(100% - 26px, 1120px);
+      }
+
+      .brand-name {
+        font-size: 24px;
+      }
+
+      .hero-copy {
+        font-size: 16px;
+      }
+
+      .app-card {
+        padding: 27px 23px;
+      }
+
+      .future-box {
+        padding: 40px 22px;
+      }
+
+      .contact-box {
+        padding: 45px 22px;
+      }
     }
   </style>
 </head>
 
 <body>
-  <div class="page">
 
-    <div class="rose">🌹</div>
+  <!-- NAVIGATION -->
 
-    <h1>The Gentle Passage</h1>
-    <div class="tagline">PRESENCE · LOVE · COMFORT</div>
+  <header>
+    <div class="wrap nav">
+      <a href="#home" class="brand">
+        <span class="brand-mark">🌿</span>
+        <span class="brand-name">Human Passages</span>
+      </a>
 
-    <div class="card">
-      <h2>A gentle companion</h2>
-      <p>
-        A gentle companion for families before, during and after a death.
-      </p>
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#apps">Our Apps</a>
+        <a href="#about">About</a>
+        <a href="#philosophy">Philosophy</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </div>
+  </header>
 
-    <div class="card">
-      <h2>Support</h2>
-      <p>
-        The Gentle Passage provides supportive, non-clinical information
-        and gentle practical guidance.
-      </p>
-      <p>
-        For medical concerns, please contact an appropriate healthcare
-        professional or care team.
-      </p>
+
+  <!-- HERO -->
+
+  <main id="home">
+
+    <section class="hero">
+      <div class="wrap">
+
+        <div class="eyebrow">
+          Thoughtful digital companions for real life
+        </div>
+
+        <h1>Human Passages</h1>
+
+        <h2>
+          Digital companions for the major passages of life.
+        </h2>
+
+        <p class="hero-copy">
+          Human Passages creates thoughtful, practical and beautifully designed
+          digital companions for the moments that shape us — beginnings,
+          endings, growing, caring, changing and becoming.
+        </p>
+
+        <p class="hero-copy">
+          Each app stands on its own while belonging to a wider collection
+          created with compassion, dignity, choice and real human experience
+          at its heart.
+        </p>
+
+        <div class="hero-actions">
+          <a class="button" href="#apps">Explore the Collection</a>
+          <a class="button secondary" href="#about">Our Story</a>
+        </div>
+
+        <div class="small-divider"></div>
+
+      </div>
+    </section>
+
+
+    <!-- APPS -->
+
+    <section class="apps" id="apps">
+      <div class="wrap">
+
+        <div class="section-heading">
+          <div class="tiny">The Collection</div>
+
+          <h2>Our Apps</h2>
+
+          <p>
+            The Gentle Passage is the first completed app in the Human Passages
+            collection. The New Passage and The Becoming Passage are currently
+            in development and coming soon.
+          </p>
+        </div>
+
+
+        <div class="app-grid">
+
+          <!-- GENTLE PASSAGE -->
+
+          <article class="app-card gentle">
+
+            <div class="app-icon">🩵🌹</div>
+
+            <span class="status">
+              First completed app
+            </span>
+
+            <h3>The Gentle Passage</h3>
+
+            <p>
+              A gentle companion for families before, during and after a death.
+            </p>
+
+            <p>
+              Practical support, memories, wishes, companion PDFs and the
+              Blue Roses Journal — together in one calm place.
+            </p>
+
+            <div class="spacer"></div>
+
+            <span class="card-link">
+              App Store release underway
+            </span>
+
+          </article>
+
+
+          <!-- NEW PASSAGE -->
+
+          <article class="app-card new">
+
+            <div class="app-icon">🌿🤍</div>
+
+            <span class="status">
+              Coming soon
+            </span>
+
+            <h3>The New Passage</h3>
+
+            <p>
+              A companion for pregnancy, birth, welcoming home and the
+              transition into parenthood.
+            </p>
+
+            <p>
+              Created with warmth, practical support, personal choice and
+              space for the moments that matter.
+            </p>
+
+            <div class="spacer"></div>
+
+            <span class="card-link">
+              Currently in development
+            </span>
+
+          </article>
+
+
+          <!-- BECOMING PASSAGE -->
+
+          <article class="app-card becoming">
+
+            <div class="app-icon">🪻🦋</div>
+
+            <span class="status">
+              Coming soon
+            </span>
+
+            <h3>The Becoming Passage</h3>
+
+            <p>
+              A companion for early teens and teens navigating growing,
+              changing and becoming.
+            </p>
+
+            <p>
+              Honest information, practical support, privacy and room to
+              discover their own voice.
+            </p>
+
+            <div class="spacer"></div>
+
+            <span class="card-link">
+              Currently in development
+            </span>
+
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- FUTURE COLLECTION -->
+
+    <section>
+      <div class="wrap">
+
+        <div class="future-box">
+
+          <div class="eyebrow">
+            An evolving body of work
+          </div>
+
+          <h2>More Passages Are Unfolding</h2>
+
+          <p>
+            Human life is full of passages.
+          </p>
+
+          <p>
+            Some arrive with celebration. Some with uncertainty. Some ask us
+            to care, to let go, to grow, or to begin again.
+          </p>
+
+          <p>
+            Human Passages is an evolving collection of digital companions
+            created to walk beside people through these different seasons
+            of life.
+          </p>
+
+          <div class="future-names">
+            The Golden Passage · The Caring Passage · and more to come
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section class="about" id="about">
+      <div class="wrap about-grid">
+
+        <div class="about-art">
+          <div>
+            🌿<br>
+            ♡
+          </div>
+        </div>
+
+        <div class="about-copy">
+
+          <div class="eyebrow">
+            The creator
+          </div>
+
+          <h2>Created by Jessica Jean</h2>
+
+          <p class="creator">
+            Creator of Human Passages
+          </p>
+
+          <p>
+            Human Passages grew from lived experience, professional insight
+            and a deep belief that people deserve practical, compassionate
+            support during life's most meaningful transitions.
+          </p>
+
+          <p>
+            I create each companion to feel useful, beautiful and human —
+            somewhere you can find information, reflection and support without
+            pressure, judgement or unnecessary complexity.
+          </p>
+
+          <p>
+            Each app is developed with care, curiosity and respect for the
+            person using it. The aim is not to tell people how their passage
+            should unfold, but to offer something steady and useful beside
+            them as it does.
+          </p>
+
+          <p>
+            This collection continues to grow as new passages unfold.
+          </p>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- PHILOSOPHY -->
+
+    <section class="philosophy" id="philosophy">
+      <div class="wrap">
+
+        <div class="section-heading">
+          <div class="tiny">What guides the work</div>
+          <h2>The Human Passages Philosophy</h2>
+        </div>
+
+        <blockquote>
+          “Different passages. The same human heart.”
+        </blockquote>
+
+        <p>
+          Life does not arrive in neat categories. Beginnings can carry
+          uncertainty. Endings can carry love. Growing can be joyful,
+          confusing and difficult all at once.
+        </p>
+
+        <p>
+          Human Passages creates digital companions that respect this
+          complexity — offering practical support, meaningful reflection and
+          space for people to remain connected to their own choices, values
+          and experience.
+        </p>
+
+        <div class="values">
+          <span class="value">Compassion</span>
+          <span class="value">Dignity</span>
+          <span class="value">Choice</span>
+          <span class="value">Privacy</span>
+          <span class="value">Practical Support</span>
+          <span class="value">Connection</span>
+          <span class="value">Meaning</span>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section id="contact">
+      <div class="wrap">
+
+        <div class="contact-box">
+
+          <h2>Stay Connected</h2>
+
+          <p>
+            Human Passages is growing. New digital companions, resources
+            and updates will be added as the collection continues to unfold.
+          </p>
+
+          <p>
+            For enquiries, collaborations or information about the collection,
+            please get in touch.
+          </p>
+
+          <!--
+            IMPORTANT:
+            Replace YOUR-EMAIL-HERE with the email address
+            you want displayed publicly on the website.
+          -->
+
+          <a href="mailto:jessiejean89@hotmail.com">
+            Contact Human Passages
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+    <div class="wrap">
+
+      <div class="footer-brand">
+        🌿 Human Passages
+      </div>
+
+      <div class="footer-line">
+        Different passages. The same human heart.
+      </div>
+
+      <div class="footer-small">
+        Australia · Created by Jessica Jean
+      </div>
+
+      <div class="footer-small">
+        © 2026 Human Passages. All rights reserved.
+      </div>
+
     </div>
+  </footer>
 
-    <div class="card">
-      <h2>Privacy</h2>
-      <p>
-        Personal information created within The Gentle Passage is designed
-        to remain private on your device unless you choose to share it.
-      </p>
-    </div>
-
-    <div class="card">
-  <h2>Contact & Support</h2>
-  <p>
-    For support or questions about The Gentle Passage, please contact:
-  </p>
-  <p>
-<a href="mailto:Jessiejean89@hotmail.com">Jessiejean89@hotmail.com</a>
-  </p>
-</div>
-<div class="card" id="privacy">
-  <h2>Privacy Policy</h2>
-
-  <p>The Gentle Passage is designed with privacy, dignity and care in mind.</p>
-
-  <p>Personal content you create within the app, including memories, photos, family details, wishes, tasks, dates and journal-style entries, is designed to be stored locally on your device.</p>
-
-  <p>The Gentle Passage does not require an account or login. Your personal content is intended to remain private on your device unless you choose to share it.</p>
-
-  <p>Photo access is requested only when you choose to add a photo within the app.</p>
-
-  <p>The Gentle Passage does not sell personal information or use personal information for advertising or tracking.</p>
-
-  <p>Locally stored information can be removed by deleting the relevant content where that option is available. Deleting the app will remove locally stored app data, subject to your device's own backup and restoration features.</p>
-
-  <p>For privacy questions or support, please use the contact details above.</p>
-
-  <p>Last updated: September 2026</p>
-</div>
-    <div class="footer">
-      A kinder tomorrow. Memories for always.
-    </div>
-
-  </div>
 </body>
 </html>
